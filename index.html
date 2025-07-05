@@ -38,15 +38,14 @@
       margin-bottom: 24px;
       font-size: 0.9em;
     }
-    .main {
-      display: flex;
-      gap: 24px;
-      width: 100vw;
-      max-width: 1700;
-      margin: 0;
-      padding: 0 16px;
-      box-sizing: border-box;
-    }
+.main {
+  display: flex;
+  gap: 24px;
+  /* width: 100vw;  — убрать */
+  max-width: 800px;     /* или любая общая ширина контейнера */
+  margin: 0 auto;       /* центрировать */
+  padding: 0 16px;
+}
     .sidebar, .speech-panel {
       flex: 0 0 640px;
       background: var(--card-bg);
