@@ -61,21 +61,19 @@
       font-size: 0.85em;
       text-align: center;
     }
+/* Ограничиваем ширину контейнера с таблицами до половины */
 .sidebar .tables {
   display: flex;
   gap: 8px;
-  /* запрещаем скролл, пусть таблицы ужимаются */
   overflow-x: hidden;
-  /* ширина по содержимому, без растягивания на всю панель */
-  width: auto;
-  max-width: auto;
+  width: 320px;      /* было auto, стало фиксированное значение */
+  max-width: 320px;  /* чтобы не расширялось */
 }
 
+/* При необходимости ужать сами таблицы */
 .sidebar .tables table {
-  /* таблицы под содержимое, без принудительных 150px */
   flex: 1 1 auto;
-  width: 300;
-  min-width: 0;    /* чтобы flex-элемент мог ужиматься */
+  min-width: 0;
 }
     /* Таблица с омоглифами (нижний регистр) */
     .sidebar .tables table:first-child {
