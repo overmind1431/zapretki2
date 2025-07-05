@@ -61,14 +61,12 @@
       font-size: 0.85em;
       text-align: center;
     }
-
 .sidebar .tables {
-  display: inline-flex;      /* превращаем в inline‑контейнер */
-  justify-content: flex-start;/* выравниваем слева */
-  gap: 8px;                   /* расстояние между таблицами */
-  overflow-x: auto;           /* если таблицы не влезают — появится скролл */
-  width: max-content;         /* ширина ровно по содержимому */
-  max-width: none;            /* снимаем любые ранее наложенные ограничения */
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  width: max-content;     /* ширина по содержимому */
+  max-width: 420px;       /* ограничиваем общую ширину */
 }
 
 
