@@ -71,15 +71,12 @@
   max-width: 100%;
 }
 
-
-
-    /* Общее правило для таблиц */
-    .sidebar .tables table {
-      border-collapse: collapse;
-      width: auto;
-      font-size: 0.75em;
-      flex-shrink: 0;
-    }
+.sidebar .tables table {
+  /* таблицы под содержимое, без принудительных 150px */
+  flex: 1 1 auto;
+  width: auto;
+  min-width: 0;    /* чтобы flex-элемент мог ужиматься */
+}
     /* Таблица с омоглифами (нижний регистр) */
     .sidebar .tables table:first-child {
       width: 150px;
