@@ -272,7 +272,7 @@
         <div><label for="fileSelect">Банворд</label><select id="fileSelect"></select></div>
       </div>
       <div class="list-container">
-        <h2 id="listTitle">Все слова <span id="wordCount" class="word-count"></span></h2>
+        <h2 id="listTitle">Список слов <span id="wordCount" class="word-count"></span></h2>
         <ul id="list"></ul>
       </div>
     </section>
@@ -301,11 +301,11 @@
       upper: { 
         dir: 'UPPERCASE', 
         files: [
-          'alah.txt', 'autist.txt', 'chernozhopy.txt', 'chink.txt', 'churka.txt', 'fashist.txt',
-          'genotsid.txt', 'gomik.txt', 'gomosek.txt', 'hidzhab.txt', 'hohol.txt', 'intsel.txt',
-          'kukold.txt', 'natsist.txt', 'negr.txt', 'niga.txt', 'niger.txt', 'pedik.txt',
-          'pedrila.txt', 'pidaras.txt', 'pidor.txt', 'pidoras.txt', 'pidrila.txt', 'pindos.txt',
-          'simp.txt', 'sionist.txt', 'uzkoglazy.txt', 'zhid.txt'
+          'ALAH.txt', 'AUTIST.txt', 'CHERNOZHOPY.txt', 'CHINK.txt', 'CHURKA.txt', 'FASHIST.txt',
+          'GENOTSID.txt', 'GOMIK.txt', 'GOMOSEK.txt', 'HIDZHAB.txt', 'HOHOL.txt', 'INTSEL.txt',
+          'KUKOLD.txt', 'NATSIST.txt', 'NEGR.txt', 'NIGA.txt', 'NIGER.txt', 'PEDIK.txt',
+          'PEDRILA.txt', 'PIDARAS.txt', 'PIDOR.txt', 'PIDORAS.txt', 'PIDRILA.txt', 'PINDOS.txt',
+          'SIMP.txt', 'SIONIST.txt', 'UZKOGLAZY.txt', 'ZHID.txt'
         ] 
       }, 
       lower: { 
@@ -322,34 +322,34 @@
 
     // Красивые названия для файлов
     const labels = {
-      'alah.txt': 'алах',
-      'autist.txt': 'аутист', 
-      'chernozhopy.txt': 'чернож*пы',
-      'chink.txt': 'чинк',
-      'churka.txt': 'чурка',
-      'fashist.txt': 'фашист',
-      'genotsid.txt': 'геноцид',
-      'gomik.txt': 'гомик',
-      'gomosek.txt': 'гомосек',
-      'hidzhab.txt': 'хиджаб',
-      'hohol.txt': 'хохол',
-      'intsel.txt': 'инцел',
-      'kukold.txt': 'кукольд',
-      'natsist.txt': 'нацист',
-      'negr.txt': 'негр',
-      'niga.txt': 'нига',
-      'niger.txt': 'нигер',
-      'pedik.txt': 'педик',
-      'pedrila.txt': 'педрила',
-      'pidaras.txt': 'пидарас',
-      'pidor.txt': 'пидор',
-      'pidoras.txt': 'пидорас',
-      'pidrila.txt': 'пидрила',
-      'pindos.txt': 'пиндос',
-      'simp.txt': 'симп',
-      'sionist.txt': 'сионист',
-      'uzkoglazy.txt': 'узкоглазый',
-      'zhid.txt': 'жид'
+      'ALAH.txt': 'алах', 'alah.txt': 'алах',
+      'AUTIST.txt': 'аутист', 'autist.txt': 'аутист',
+      'CHERNOZHOPY.txt': 'чернож*пы', 'chernozhopy.txt': 'чернож*пы',
+      'CHINK.txt': 'чинк', 'chink.txt': 'чинк',
+      'CHURKA.txt': 'чурка', 'churka.txt': 'чурка',
+      'FASHIST.txt': 'фашист', 'fashist.txt': 'фашист',
+      'GENOTSID.txt': 'геноцид', 'genotsid.txt': 'геноцид',
+      'GOMIK.txt': 'гомик', 'gomik.txt': 'гомик',
+      'GOMOSEK.txt': 'гомосек', 'gomosek.txt': 'гомосек',
+      'HIDZHAB.txt': 'хиджаб', 'hidzhab.txt': 'хиджаб',
+      'HOHOL.txt': 'хохол', 'hohol.txt': 'хохол',
+      'INTSEL.txt': 'инцел', 'intsel.txt': 'инцел',
+      'KUKOLD.txt': 'кукольд', 'kukold.txt': 'кукольд',
+      'NATSIST.txt': 'нацист', 'natsist.txt': 'нацист',
+      'NEGR.txt': 'негр', 'negr.txt': 'негр',
+      'NIGA.txt': 'нига', 'niga.txt': 'нига',
+      'NIGER.txt': 'нигер', 'niger.txt': 'нигер',
+      'PEDIK.txt': 'педик', 'pedik.txt': 'педик',
+      'PEDRILA.txt': 'педрила', 'pedrila.txt': 'педрила',
+      'PIDARAS.txt': 'пидарас', 'pidaras.txt': 'пидарас',
+      'PIDOR.txt': 'пидор', 'pidor.txt': 'пидор',
+      'PIDORAS.txt': 'пидорас', 'pidoras.txt': 'пидорас',
+      'PIDRILA.txt': 'пидрила', 'pidrila.txt': 'пидрила',
+      'PINDOS.txt': 'пиндос', 'pindos.txt': 'пиндос',
+      'SIMP.txt': 'симп', 'simp.txt': 'симп',
+      'SIONIST.txt': 'сионист', 'sionist.txt': 'сионист',
+      'UZKOGLAZY.txt': 'узкоглазый', 'uzkoglazy.txt': 'узкоглазый',
+      'ZHID.txt': 'жид', 'zhid.txt': 'жид'
     };
 
     const regSelect = document.getElementById('registerSelect');
@@ -375,8 +375,6 @@
 
     function populateFileSelect(mode) { 
       fileSelect.innerHTML = ''; 
-      // Добавляем опцию "Все файлы"
-      fileSelect.add(new Option('Все файлы', 'all'));
       // Добавляем отдельные файлы
       sources[mode].files.forEach(f => fileSelect.add(new Option(labels[f] || f, f))); 
       fileSelect.selectedIndex = 0; 
@@ -427,15 +425,8 @@
       wordCount.textContent = '';
 
       try {
-        let words = [];
-        
-        if (file === 'all') {
-          words = await loadAllFiles(mode);
-          listTitle.textContent = 'Все слова';
-        } else {
-          words = await loadSingleFile(mode, file);
-          listTitle.textContent = labels[file] || file;
-        }
+        const words = await loadSingleFile(mode, file);
+        listTitle.textContent = labels[file] || file;
 
         list.innerHTML = '';
         wordCount.textContent = `(${words.length} слов)`;
