@@ -14,11 +14,7 @@
       --shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
       --non-russian-opacity: 0.4;
     }
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Segoe UI', sans-serif;
       background: var(--bg-color);
@@ -26,10 +22,7 @@
       line-height: 1.4;
       padding: 16px;
     }
-    h1 {
-      font-size: 1.5em;
-      margin-bottom: 8px;
-    }
+    h1 { font-size: 1.5em; margin-bottom: 8px; }
     .notice {
       background: #333;
       color: var(--text-color);
@@ -41,14 +34,11 @@
     .main {
       display: flex;
       gap: 24px;
-      width: 100vw;
-      max-width: none;
-      margin: 0;
-      padding: 0 16px;
-      box-sizing: border-box;
+      max-width: 1400px;
+      margin: 0 auto;
     }
-.sidebar, .speech-panel {
-  flex: 0 0 640px;
+    .sidebar, .speech-panel {
+      flex: 0 0 320px;
       background: var(--card-bg);
       box-shadow: var(--shadow);
       border-radius: var(--border-radius);
@@ -61,29 +51,16 @@
       font-size: 0.85em;
       text-align: center;
     }
-/* Ограничиваем ширину контейнера с таблицами до половины */
-.sidebar .tables {
-  display: flex;
-  gap: 8px;
-  overflow-x: hidden;
-  width: 320px;      /* было auto, стало фиксированное значение */
-  max-width: 320px;  /* чтобы не расширялось */
-}
-
-/* При необходимости ужать сами таблицы */
-.sidebar .tables table {
-  flex: 1 1 auto;
-  min-width: 0;
-}
-    /* Таблица с омоглифами (нижний регистр) */
-    .sidebar .tables table:first-child {
-      width: 150px;
-      min-width: 150px;
+    .sidebar .tables {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      overflow-x: auto;
     }
-    /* Таблица с омоглифами (верхний регистр) */
-    .sidebar .tables table:nth-child(2) {
-      width: 150px;
-      min-width: 150px;
+    .sidebar table {
+      border-collapse: collapse;
+      width: 48%;
+      font-size: 0.75em;
     }
     .sidebar th, .sidebar td {
       border: 1px solid #444;
@@ -99,6 +76,11 @@
       display: flex;
       flex-direction: column;
     }
+    .generated-title {
+      font-size: 1.2em;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
     .controls {
       background: var(--card-bg);
       box-shadow: var(--shadow);
@@ -111,14 +93,8 @@
       align-items: center;
       justify-content: space-between;
     }
-    .controls div {
-      display: flex;
-      flex-direction: column;
-    }
-    label {
-      margin-bottom: 8px;
-      font-weight: 600;
-    }
+    .controls div { display: flex; flex-direction: column; }
+    label { margin-bottom: 8px; font-weight: 600; }
     select {
       padding: 8px;
       border: 1px solid #555;
@@ -153,15 +129,11 @@
       word-break: break-all;
       font-size: 0.95em;
     }
-    .list-container li:last-child {
-      border-bottom: none;
-    }
-    .non-russian {
-      opacity: var(--non-russian-opacity);
-    }
+    .list-container li:last-child { border-bottom: none; }
+    .non-russian { opacity: var(--non-russian-opacity); }
     .speech-panel iframe {
       width: 100%;
-      height: 800px;
+      height: 400px;
       border: none;
       border-radius: var(--border-radius);
       background: #2a2a2a;
@@ -226,77 +198,48 @@
         <table>
           <thead><tr><th>нормальная буква</th><th>нечитаемый омоглиф</th></tr></thead>
           <tbody>
-    <tr><td>а</td><td>–</td></tr>
-    <tr><td>б</td><td>–</td></tr>
-    <tr><td>в</td><td>ʙ</td></tr>
-    <tr><td>г</td><td>ᴦ</td></tr>
-    <tr><td>д</td><td>–</td></tr>
-    <tr><td>е</td><td>℮</td></tr>
-    <tr><td>ё</td><td>–</td></tr>
-    <tr><td>ж</td><td>–</td></tr>
-    <tr><td>з</td><td>ɜ</td></tr>
-    <tr><td>и</td><td>ͷ</td></tr>
-    <tr><td>й</td><td>–</td></tr>
-    <tr><td>к</td><td>ĸ</td></tr>
-    <tr><td>л</td><td>ᴫ</td></tr>
-    <tr><td>м</td><td>ᴍ</td></tr>
-    <tr><td>н</td><td>ʜ</td></tr>
-    <tr><td>о</td><td>ο</td></tr>
-    <tr><td>п</td><td>ᴨ</td></tr>
-    <tr><td>р</td><td>ⲣ</td></tr>
-    <tr><td>с</td><td>ϲ</td></tr>
-    <tr><td>т</td><td>ᴛ</td></tr>
-    <tr><td>у</td><td>–</td></tr>
-    <tr><td>ф</td><td>ɸ</td></tr>
-    <tr><td>х</td><td>–</td></tr>
-    <tr><td>ц</td><td>–</td></tr>
-    <tr><td>ч</td><td>–</td></tr>
-    <tr><td>ш</td><td>–</td></tr>
-    <tr><td>щ</td><td>–</td></tr>
-    <tr><td>ъ</td><td>–</td></tr>
-    <tr><td>ы</td><td>–</td></tr>
-    <tr><td>ь</td><td>–</td></tr>
-    <tr><td>э</td><td>–</td></tr>
-    <tr><td>ю</td><td>–</td></tr>
-    <tr><td>я</td><td>ᴙ</td></tr>
+            <tr><td>в</td><td>ʙ</td></tr>
+            <tr><td>г</td><td>ᴦ</td></tr>
+            <tr><td>е</td><td>℮</td></tr>
+            <tr><td>з</td><td>ɜ</td></tr>
+            <tr><td>и</td><td>ͷ</td></tr>
+            <tr><td>к</td><td>ĸ</td></tr>
+            <tr><td>л</td><td>ᴫ</td></tr>
+            <tr><td>м</td><td>ᴍ</td></tr>
+            <tr><td>н</td><td>ʜ</td></tr>
+            <tr><td>о</td><td>ο</td></tr>
+            <tr><td>п</td><td>ᴨ</td></tr>
+            <tr><td>р</td><td>ⲣ</td></tr>
+            <tr><td>с</td><td>ϲ</td></tr>
+            <tr><td>т</td><td>ᴛ</td></tr>
+            <tr><td>ф</td><td>ɸ</td></tr>
+            <tr><td>я</td><td>ᴙ</td></tr>
           </tbody>
         </table>
         <table>
           <thead><tr><th>НОРМАЛЬНАЯ БУКВА</th><th>НЕЧИТАЕМЫЙ ОМОГЛИФ</th></tr></thead>
           <tbody>
             <tr><td>А</td><td>Α</td></tr>
-    <tr><td>Б</td><td>–</td></tr>
-    <tr><td>В</td><td>Β</td></tr>
-    <tr><td>Г</td><td>Γ</td></tr>
-    <tr><td>Д</td><td>–</td></tr>
-    <tr><td>Е</td><td>Ε</td></tr>
-    <tr><td>Ё</td><td>–</td></tr>
-    <tr><td>Ж</td><td>–</td></tr>
-    <tr><td>З</td><td>Ꝫ</td></tr>
-    <tr><td>И</td><td>𐐥</td></tr>
-    <tr><td>Й</td><td>–</td></tr>
-    <tr><td>К</td><td>Κ</td></tr>
-    <tr><td>Л</td><td>–</td></tr>
-    <tr><td>М</td><td>Μ</td></tr>
-    <tr><td>Н</td><td>Η</td></tr>
-    <tr><td>О</td><td>Ο</td></tr>
-    <tr><td>П</td><td>Π</td></tr>
-    <tr><td>Р</td><td>Ρ</td></tr>
-    <tr><td>С</td><td>Ꮯ</td></tr>
-    <tr><td>Т</td><td>Τ</td></tr>
-    <tr><td>У</td><td>Ꭹ</td></tr>
-    <tr><td>Ф</td><td>Փ</td></tr>
-    <tr><td>Х</td><td>Χ</td></tr>
-    <tr><td>Ц</td><td>–</td></tr>
-    <tr><td>Ч</td><td>Ⴗ</td></tr>
-    <tr><td>Ш</td><td>Ш</td></tr>
-    <tr><td>Щ</td><td>–</td></tr>
-    <tr><td>Ъ</td><td>–</td></tr>
-    <tr><td>Ы</td><td>–</td></tr>
-    <tr><td>Ь</td><td>Ꮟ</td></tr>
-    <tr><td>Э</td><td>℈</td></tr>
-    <tr><td>Ю</td><td>–</td></tr>
-    <tr><td>Я</td><td>–</td></tr>
+            <tr><td>В</td><td>Β</td></tr>
+            <tr><td>Г</td><td>Γ</td></tr>
+            <tr><td>Е</td><td>Ε</td></tr>
+            <tr><td>З</td><td>Ꝫ</td></tr>
+            <tr><td>И</td><td>𐐥</td></tr>
+            <tr><td>К</td><td>Κ</td></tr>
+            <tr><td>М</td><td>Μ</td></tr>
+            <tr><td>Н</td><td>Η</td></tr>
+            <tr><td>О</td><td>Ο</td></tr>
+            <tr><td>П</td><td>Π</td></tr>
+            <tr><td>Р</td><td>Ρ</td></tr>
+            <tr><td>С</td><td>Ꮯ</td></tr>
+            <tr><td>Т</td><td>Τ</td></tr>
+            <tr><td>У</td><td>Ꭹ</td></tr>
+            <tr><td>Ф</td><td>Փ</td></tr>
+            <tr><td>Х</td><td>Χ</td></tr>
+            <tr><td>Ч</td><td>Ⴗ</td></tr>
+            <tr><td>Ш</td><td>Ш</td></tr>
+            <tr><td>Ь</td><td>Ꮟ</td></tr>
+            <tr><td>Э</td><td>℈</td></tr>
           </tbody>
         </table>
       </div>
@@ -314,7 +257,7 @@
     </section>
 
     <aside class="speech-panel">
-      <div class="speech-panel-title"></div>
+      <div class="speech-panel-title">Озвучка текста</div>
       <iframe src="https://zvukogram.com/speech/bot-maxim/" title="Озвучка текста"></iframe>
       <div class="donation">
         <h3>Донат (по желанию)</h3>
@@ -324,7 +267,7 @@
           <li><img src="https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/svg/icon/usdt.svg" alt="USDT" class="icon-crypto">USDT (TRC-20): TTxGSWYegcrCioF7aGjfoYFr6yMzACcURd</li>
           <li><img src="https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/svg/icon/ltc.svg" alt="Litecoin" class="icon-crypto">Litecoin: ltc1q6vrw4ekcqj66qdz9t7pnue4q05l47pzhqz5wu6</li>
           <li><img src="https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/svg/icon/sol.svg" alt="Solana" class="icon-crypto">Solana: 4nUzv4rUnHMTTALiuHyVNbF4PGF5VRdY5734nQng7sLy</li>
-          <li><span class="icon-crypto">🔗</span><a href="https://www.donationalerts.com/r/zapretki" target="_blank">donationalerts.com/r/zapretki</a></li>
+          <li><span class="icon-crypto">🔗</span><a href="https://www.donationalerts.com/r/overminded" target="_blank">donationalerts.com/r/overminded</a></li>
         </ul>
       </div>
     </aside>
