@@ -38,14 +38,15 @@
       margin-bottom: 24px;
       font-size: 0.9em;
     }
-.main {
-  display: flex;
-  gap: 24px;
-  /* width: 100vw;  — убрать */
-  max-width: 800px;     /* или любая общая ширина контейнера */
-  margin: 0 auto;       /* центрировать */
-  padding: 0 16px;
-}
+    .main {
+      display: flex;
+      gap: 24px;
+      width: 100vw;
+      max-width: none;
+      margin: 0;
+      padding: 0 16px;
+      box-sizing: border-box;
+    }
     .sidebar, .speech-panel {
       flex: 0 0 640px;
       background: var(--card-bg);
@@ -64,7 +65,7 @@
   display: flex;
   gap: 8px;
   overflow-x: auto;
-  width: max-content;     /* ширина по содержимому */
+  width: auto;     /* ширина по содержимому */
   max-width: 420px;       /* ограничиваем общую ширину */
 }
 
