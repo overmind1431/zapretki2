@@ -64,9 +64,11 @@
 .sidebar .tables {
   display: flex;
   gap: 8px;
-  overflow-x: auto;
-  width: auto;     /* ширина по содержимому */
-  max-width: 420px;       /* ограничиваем общую ширину */
+  /* запрещаем скролл, пусть таблицы ужимаются */
+  overflow-x: hidden;
+  /* ширина по содержимому, без растягивания на всю панель */
+  width: auto;
+  max-width: 100%;
 }
 
 
