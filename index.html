@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Генератор скрытых банвордов твича.</title>
+  <title>Генератор скрытых банвордов твича. v0.2</title>
   <style>
     :root {
       --bg-color: #121212;
@@ -14,7 +14,11 @@
       --shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
       --non-russian-opacity: 0.4;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
     body {
       font-family: 'Segoe UI', sans-serif;
       background: var(--bg-color);
@@ -22,7 +26,10 @@
       line-height: 1.4;
       padding: 16px;
     }
-    h1 { font-size: 1.5em; margin-bottom: 8px; }
+    h1 {
+      font-size: 1.5em;
+      margin-bottom: 8px;
+    }
     .notice {
       background: #333;
       color: var(--text-color);
@@ -37,7 +44,8 @@
       max-width: 1400px;
       margin: 0 auto;
     }
-    .sidebar, .speech-panel {
+    .sidebar,
+    .speech-panel {
       flex: 0 0 320px;
       background: var(--card-bg);
       box-shadow: var(--shadow);
@@ -62,7 +70,8 @@
       width: 48%;
       font-size: 0.75em;
     }
-    .sidebar th, .sidebar td {
+    .sidebar th,
+    .sidebar td {
       border: 1px solid #444;
       padding: 4px 6px;
       text-align: center;
@@ -76,11 +85,6 @@
       display: flex;
       flex-direction: column;
     }
-    .generated-title {
-      font-size: 1.2em;
-      font-weight: 600;
-      margin-bottom: 16px;
-    }
     .controls {
       background: var(--card-bg);
       box-shadow: var(--shadow);
@@ -93,8 +97,14 @@
       align-items: center;
       justify-content: space-between;
     }
-    .controls div { display: flex; flex-direction: column; }
-    label { margin-bottom: 8px; font-weight: 600; }
+    .controls div {
+      display: flex;
+      flex-direction: column;
+    }
+    label {
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
     select {
       padding: 8px;
       border: 1px solid #555;
@@ -129,19 +139,15 @@
       word-break: break-all;
       font-size: 0.95em;
     }
-    .list-container li:last-child { border-bottom: none; }
-    .non-russian { opacity: var(--non-russian-opacity); }
-    .speech-panel iframe {
-      width: 100%;
-      height: 400px;
-      border: none;
-      border-radius: var(--border-radius);
-      background: #2a2a2a;
+    .list-container li:last-child {
+      border-bottom: none;
     }
-    .speech-panel-title {
-      font-size: 1em;
-      font-weight: 600;
-      margin-bottom: 12px;
+    .non-russian {
+      opacity: var(--non-russian-opacity);
+    }
+    .speech-panel #speechContainer {
+      width: 100%;
+      min-height: 200px;
     }
     .donation {
       margin-top: 16px;
@@ -175,28 +181,24 @@
       text-decoration: none;
       word-break: break-all;
     }
-    .loading {
-      text-align: center;
-      padding: 20px;
-      font-style: italic;
-    }
-    .word-count {
-      font-size: 0.9em;
-      color: #888;
-      margin-left: 8px;
-    }
   </style>
 </head>
 <body>
-  <h1>Генератор скрытых запреток в донате. v0.2</h1>
-  <div class="notice">Как это было сделано? С помощью машинного зрения и синтезатора голоса скриптом было прочеканно миллион символов из UTF8, чтобы найти нечитаемые синтезатором речи омоглифы, которые идеально похожи на обычные русские буквы</div>
+  <h1>Генератор скрытых банвордов твича. v0.2</h1>
+  <div class="notice">
+    Как это было сделано? С помощью машинного зрения и окна озвучки текста от zvukogram.com
+  </div>
   <div class="main">
 
     <aside class="sidebar">
-      <div class="explanation">Таблица с нечитаемыми омоглифами. Не для всех букв есть идеально похожие</div>
+      <div class="explanation">
+        Таблица с нечитаемыми омоглифами. Не для всех букв есть идеально похожие
+      </div>
       <div class="tables">
         <table>
-          <thead><tr><th>нормальная буква</th><th>нечитаемый омоглиф</th></tr></thead>
+          <thead>
+            <tr><th>нормальная буква</th><th>нечитаемый омоглиф</th></tr>
+          </thead>
           <tbody>
             <tr><td>в</td><td>ʙ</td></tr>
             <tr><td>г</td><td>ᴦ</td></tr>
@@ -217,7 +219,9 @@
           </tbody>
         </table>
         <table>
-          <thead><tr><th>НОРМАЛЬНАЯ БУКВА</th><th>НЕЧИТАЕМЫЙ ОМОГЛИФ</th></tr></thead>
+          <thead>
+            <tr><th>НОРМАЛЬНАЯ БУКВА</th><th>НЕЧИТАЕМЫЙ ОМОГЛИФ</th></tr>
+          </thead>
           <tbody>
             <tr><td>А</td><td>Α</td></tr>
             <tr><td>В</td><td>Β</td></tr>
@@ -245,60 +249,95 @@
       </div>
     </aside>
 
-    <section class="content">  
+    <section class="content">
       <div class="controls">
-        <div><label for="registerSelect">Регистр</label><select id="registerSelect"></select></div>
-        <div><label for="fileSelect">Банворд</label><select id="fileSelect"></select></div>
+        <div>
+          <label for="registerSelect">Регистр</label>
+          <select id="registerSelect"></select>
+        </div>
+        <div>
+          <label for="fileSelect">Банворд</label>
+          <select id="fileSelect"></select>
+        </div>
       </div>
       <div class="list-container">
-        <h2 id="listTitle">Список слов <span id="wordCount" class="word-count"></span></h2>
+        <h2 id="listTitle">
+          Список слов <span id="wordCount" class="word-count"></span>
+        </h2>
         <ul id="list"></ul>
       </div>
     </section>
 
     <aside class="speech-panel">
-      <div class="speech-panel-title">Озвучка текста</div>
-      <iframe src="https://zvukogram.com/speech/bot-maxim/" title="Озвучка текста"></iframe>
+      <label>Окно озвучки текста</label>
+      <div id="speechContainer">
+        Загрузка виджета озвучки…
+      </div>
       <div class="donation">
         <h3>Донат (по желанию)</h3>
         <ul>
-          <li><img src="https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/svg/icon/btc.svg" alt="Bitcoin" class="icon-crypto">Bitcoin: bc1qj3gvs0qjqgx637r4ch00neukrh3n98m0ljf8j3</li>
-          <li><img src="https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/svg/icon/eth.svg" alt="Ethereum" class="icon-crypto">Ethereum: 0x1B5310cad9F99f1FAbA21512f54eB83538356A54</li>
-          <li><img src="https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/svg/icon/usdt.svg" alt="USDT" class="icon-crypto">USDT (TRC-20): TTxGSWYegcrCioF7aGjfoYFr6yMzACcURd</li>
-          <li><img src="https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/svg/icon/ltc.svg" alt="Litecoin" class="icon-crypto">Litecoin: ltc1q6vrw4ekcqj66qdz9t7pnue4q05l47pzhqz5wu6</li>
-          <li><img src="https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/svg/icon/sol.svg" alt="Solana" class="icon-crypto">Solana: 4nUzv4rUnHMTTALiuHyVNbF4PGF5VRdY5734nQng7sLy</li>
-          <li><span class="icon-crypto">🔗</span><a href="https://www.donationalerts.com/r/overminded" target="_blank">donationalerts.com/r/overminded</a></li>
+          <li>
+            <img src="https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/svg/icon/btc.svg"
+                 alt="Bitcoin" class="icon-crypto">
+            Bitcoin: bc1qj3gvs0qjqgx637r4ch00neukrh3n98m0ljf8j3
+          </li>
+          <li>
+            <img src="https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/svg/icon/eth.svg"
+                 alt="Ethereum" class="icon-crypto">
+            Ethereum: 0x1B5310cad9F99f1FAbA21512f54eB83538356A54
+          </li>
+          <li>
+            <img src="https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/svg/icon/usdt.svg"
+                 alt="USDT" class="icon-crypto">
+            USDT (TRC-20): TTxGSWYegcrCioF7aGjfoYFr6yMzACcURd
+          </li>
+          <li>
+            <img src="https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/svg/icon/ltc.svg"
+                 alt="Litecoin" class="icon-crypto">
+            Litecoin: ltc1q6vrw4ekcqj66qdz9t7pnue4q05l47pzhqz5wu6
+          </li>
+          <li>
+            <img src="https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/svg/icon/sol.svg"
+                 alt="Solana" class="icon-crypto">
+            Solana: 4nUzv4rUnHMTTALiuHyVNbF4PGF5VRdY5734nQng7sLy
+          </li>
+          <li>
+            <a href="https://www.donationalerts.com/r/overminded" target="_blank">
+              donationalerts.com/r/overminded
+            </a>
+          </li>
         </ul>
       </div>
     </aside>
 
   </div>
+
   <script>
-    // Полный список всех файлов из обеих папок
-    const sources = { 
-      upper: { 
-        dir: 'UPPERCASE', 
+    const sources = {
+      upper: {
+        dir: 'UPPERCASE',
         files: [
-          'ALAH.txt', 'AUTIST.txt', 'CHERNOZHOPYY.txt', 'CHINK.txt', 'CHURKA.txt', 'FASHIST.txt',
-          'GENOTSID.txt', 'GOMIK.txt', 'GOMOSEK.txt', 'HIDZHAB.txt', 'HOHOL.txt', 'INTSEL.txt',
-          'KUKOLD.txt', 'NATSIST.txt', 'NEGR.txt', 'NIGA.txt', 'NIGER.txt', 'PEDIK.txt',
-          'PEDRILA.txt', 'PIDARAS.txt', 'PIDOR.txt', 'PIDORAS.txt', 'PIDRILA.txt', 'PINDOS.txt',
-          'SIMP.txt', 'SIONIST.txt', 'UZKOGLAZY.txt', 'ZHID.txt'
-        ] 
-      }, 
-      lower: { 
-        dir: 'lowercase', 
+          'ALAH.txt', 'AUTIST.txt', 'CHERNOZHOPYY.txt', 'CHINK.txt', 'CHURKA.txt',
+          'FASHIST.txt', 'GENOTSID.txt', 'GOMIK.txt', 'GOMOSEK.txt', 'HIDZHAB.txt',
+          'HOHOL.txt', 'INTSEL.txt', 'KUKOLD.txt', 'NATSIST.txt', 'NEGR.txt',
+          'NIGA.txt', 'NIGER.txt', 'PEDIK.txt', 'PEDRILA.txt', 'PIDARAS.txt',
+          'PIDOR.txt', 'PIDORAS.txt', 'PIDRILA.txt', 'PINDOS.txt', 'SIMP.txt',
+          'SIONIST.txt', 'UZKOGLAZY.txt', 'ZHID.txt'
+        ]
+      },
+      lower: {
+        dir: 'lowercase',
         files: [
-          'alah.txt', 'autist.txt', 'chernozhopyy.txt', 'chink.txt', 'churka.txt', 'fashist.txt',
-          'genotsid.txt', 'gomik.txt', 'gomosek.txt', 'hidzhab.txt', 'hohol.txt', 'intsel.txt',
-          'kukold.txt', 'natsist.txt', 'negr.txt', 'niga.txt', 'niger.txt', 'pedik.txt',
-          'pedrila.txt', 'pidaras.txt', 'pidor.txt', 'pidoras.txt', 'pidrila.txt', 'pindos.txt',
-          'simp.txt', 'sionist.txt', 'uzkoglazy.txt', 'zhid.txt'
-        ] 
-      } 
+          'alah.txt', 'autist.txt', 'chernozhopyy.txt', 'chink.txt', 'churka.txt',
+          'fashist.txt', 'genotsid.txt', 'gomik.txt', 'gomosek.txt', 'hidzhab.txt',
+          'hohol.txt', 'intsel.txt', 'kukold.txt', 'natsist.txt', 'negr.txt',
+          'niga.txt', 'niger.txt', 'pedik.txt', 'pedrila.txt', 'pidaras.txt',
+          'pidor.txt', 'pidoras.txt', 'pidrila.txt', 'pindos.txt', 'simp.txt',
+          'sionist.txt', 'uzkoglazy.txt', 'zhid.txt'
+        ]
+      }
     };
 
-    // Красивые названия для файлов
     const labels = {
       'NIGA.txt': 'нига', 'niga.txt': 'нига',
       'NEGR.txt': 'негр', 'negr.txt': 'негр',
@@ -330,55 +369,30 @@
       'ZHID.txt': 'жид', 'zhid.txt': 'жид'
     };
 
-    const regSelect = document.getElementById('registerSelect');
-    const fileSelect = document.getElementById('fileSelect');
-    const list = document.getElementById('list');
-    const listTitle = document.getElementById('listTitle');
-    const wordCount = document.getElementById('wordCount');
-
-    function wrapChars(text) { 
-      return Array.from(text).map(ch => { 
-        const span = document.createElement('span'); 
-        span.textContent = ch; 
-        if (!/[А-Яа-яЁё\s]/.test(ch)) span.classList.add('non-russian'); 
-        return span; 
-      }); 
-    }
-
-    function populateRegisterSelect() { 
-      regSelect.innerHTML = ''; 
-      [['ВЕРХНИЙ', 'upper'], ['нижний', 'lower']].forEach(([t, v]) => regSelect.add(new Option(t, v))); 
-      regSelect.value = 'upper'; 
-    }
-
-    function populateFileSelect(mode) { 
-      fileSelect.innerHTML = ''; 
-      // Добавляем отдельные файлы
-      sources[mode].files.forEach(f => fileSelect.add(new Option(labels[f] || f, f))); 
-      fileSelect.selectedIndex = 0; 
-    }
-
-    async function loadAllFiles(mode) {
-      const allWords = [];
-      const promises = sources[mode].files.map(async (file) => {
-        try {
-          const response = await fetch(`${sources[mode].dir}/${file}`);
-          if (response.ok) {
-            const text = await response.text();
-            const words = text.split(/\r?\n/).filter(line => line.trim());
-            return words;
-          }
-        } catch (error) {
-          console.error(`Ошибка загрузки файла ${file}:`, error);
-          return [];
-        }
+    function wrapChars(text) {
+      return Array.from(text).map(ch => {
+        const span = document.createElement('span');
+        span.textContent = ch;
+        if (!/[А-Яа-яЁё\s]/.test(ch)) span.classList.add('non-russian');
+        return span;
       });
+    }
 
-      const results = await Promise.all(promises);
-      results.forEach(words => allWords.push(...words));
-      
-      // Убираем дубликаты и сортируем
-      return [...new Set(allWords)].sort();
+    function populateRegisterSelect() {
+      const regSelect = document.getElementById('registerSelect');
+      regSelect.innerHTML = '';
+      [['ВЕРХНИЙ', 'upper'], ['нижний', 'lower']]
+        .forEach(([t, v]) => regSelect.add(new Option(t, v)));
+      regSelect.value = 'upper';
+    }
+
+    function populateFileSelect(mode) {
+      const fileSelect = document.getElementById('fileSelect');
+      fileSelect.innerHTML = '';
+      sources[mode].files.forEach(f =>
+        fileSelect.add(new Option(labels[f] || f, f))
+      );
+      fileSelect.selectedIndex = 0;
     }
 
     async function loadSingleFile(mode, file) {
@@ -390,55 +404,68 @@
         }
       } catch (error) {
         console.error(`Ошибка загрузки файла ${file}:`, error);
-        return [];
       }
+      return [];
     }
 
-    async function renderList() { 
-      const mode = regSelect.value;
-      const file = fileSelect.value;
-      
+    async function renderList() {
+      const mode = document.getElementById('registerSelect').value;
+      const file = document.getElementById('fileSelect').value;
+      const list = document.getElementById('list');
+      const listTitle = document.getElementById('listTitle');
+      const wordCount = document.getElementById('wordCount');
+
       list.innerHTML = '<li class="loading">Загрузка...</li>';
       listTitle.textContent = 'Загрузка...';
       wordCount.textContent = '';
 
-      try {
-        const words = await loadSingleFile(mode, file);
-        listTitle.textContent = labels[file] || file;
+      const words = await loadSingleFile(mode, file);
+      listTitle.textContent = labels[file] || file;
+      list.innerHTML = '';
+      wordCount.textContent = `(${words.length} слов)`;
 
-        list.innerHTML = '';
-        wordCount.textContent = `(${words.length} слов)`;
-
+      if (!words.length) {
+        list.innerHTML = '<li>Нет слов для отображения</li>';
+      } else {
         words.forEach(word => {
-          if (word.trim()) {
-            const li = document.createElement('li');
-            wrapChars(word).forEach(s => li.appendChild(s));
-            list.appendChild(li);
-          }
+          const li = document.createElement('li');
+          wrapChars(word).forEach(s => li.appendChild(s));
+          list.appendChild(li);
         });
-
-        if (words.length === 0) {
-          list.innerHTML = '<li>Нет слов для отображения</li>';
-        }
-
-      } catch (error) {
-        list.innerHTML = `<li>Ошибка загрузки: ${error.message}</li>`;
-        listTitle.textContent = 'Ошибка';
-        wordCount.textContent = '';
       }
     }
 
-    regSelect.addEventListener('change', () => { 
-      populateFileSelect(regSelect.value); 
-      renderList(); 
-    });
-    
-    fileSelect.addEventListener('change', renderList);
+    document.addEventListener('DOMContentLoaded', () => {
+      populateRegisterSelect();
+      populateFileSelect('upper');
+      renderList();
+      document.getElementById('registerSelect')
+        .addEventListener('change', () => {
+          populateFileSelect(document.getElementById('registerSelect').value);
+          renderList();
+        });
+      document.getElementById('fileSelect')
+        .addEventListener('change', renderList);
 
-    // Инициализация
-    populateRegisterSelect(); 
-    populateFileSelect('upper'); 
-    renderList();
+      // Загрузка внешнего виджета .dash
+      const container = document.getElementById('speechContainer');
+      fetch('https://zvukogram.com/speech/bot-maxim/')
+        .then(r => r.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, 'text/html');
+          const dash = doc.querySelector('.dash');
+          if (dash) {
+            container.innerHTML = '';
+            container.appendChild(dash.cloneNode(true));
+          } else {
+            container.innerHTML = '<p>Элемент .dash не найден</p>';
+          }
+        })
+        .catch(() => {
+          container.innerHTML = '<p>Ошибка загрузки виджета озвучки</p>';
+        });
+    });
   </script>
 </body>
 </html>
