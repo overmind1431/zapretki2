@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Генератор скрытых банвордов твича. v0.2</title>
+  <title>Генератор скрытых банвордов твича.</title>
   <style>
     :root {
       --bg-color: #121212;
@@ -14,11 +14,7 @@
       --shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
       --non-russian-opacity: 0.4;
     }
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Segoe UI', sans-serif;
       background: var(--bg-color);
@@ -26,10 +22,7 @@
       line-height: 1.4;
       padding: 16px;
     }
-    h1 {
-      font-size: 1.5em;
-      margin-bottom: 8px;
-    }
+    h1 { font-size: 1.5em; margin-bottom: 8px; }
     .notice {
       background: #333;
       color: var(--text-color);
@@ -44,8 +37,7 @@
       max-width: 1400px;
       margin: 0 auto;
     }
-    .sidebar,
-    .speech-panel {
+    .sidebar, .speech-panel {
       flex: 0 0 320px;
       background: var(--card-bg);
       box-shadow: var(--shadow);
@@ -70,8 +62,7 @@
       width: 48%;
       font-size: 0.75em;
     }
-    .sidebar th,
-    .sidebar td {
+    .sidebar th, .sidebar td {
       border: 1px solid #444;
       padding: 4px 6px;
       text-align: center;
@@ -85,6 +76,11 @@
       display: flex;
       flex-direction: column;
     }
+    .generated-title {
+      font-size: 1.2em;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
     .controls {
       background: var(--card-bg);
       box-shadow: var(--shadow);
@@ -97,14 +93,8 @@
       align-items: center;
       justify-content: space-between;
     }
-    .controls div {
-      display: flex;
-      flex-direction: column;
-    }
-    label {
-      margin-bottom: 8px;
-      font-weight: 600;
-    }
+    .controls div { display: flex; flex-direction: column; }
+    label { margin-bottom: 8px; font-weight: 600; }
     select {
       padding: 8px;
       border: 1px solid #555;
@@ -139,15 +129,15 @@
       word-break: break-all;
       font-size: 0.95em;
     }
-    .list-container li:last-child {
-      border-bottom: none;
-    }
-    .non-russian {
-      opacity: var(--non-russian-opacity);
-    }
-    .speech-panel #speechContainer {
+    .list-container li:last-child { border-bottom: none; }
+    .non-russian { opacity: var(--non-russian-opacity); }
+    /* speech-panel styles */
+    .speech-panel iframe {
       width: 100%;
-      min-height: 200px;
+      height: 400px;
+      border: none;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
     }
     .donation {
       margin-top: 16px;
@@ -184,66 +174,90 @@
   </style>
 </head>
 <body>
-  <h1>Генератор скрытых банвордов твича. v0.2</h1>
+  <h1>Генератор скрытых запросов в донате. v0.2</h1>
   <div class="notice">
     Как это было сделано? С помощью машинного зрения и окна озвучки текста от zvukogram.com
   </div>
   <div class="main">
 
     <aside class="sidebar">
-      <div class="explanation">
-        Таблица с нечитаемыми омоглифами. Не для всех букв есть идеально похожие
-      </div>
+      <div class="explanation">Таблица с нечитаемыми омоглифами. Не для всех букв есть идеально похожие</div>
       <div class="tables">
+        <!-- таблицы омоглифов -->
         <table>
-          <thead>
-            <tr><th>нормальная буква</th><th>нечитаемый омоглиф</th></tr>
-          </thead>
+          <thead><tr><th>нормальная буква</th><th>нечитаемый омоглиф</th></tr></thead>
           <tbody>
-            <tr><td>в</td><td>ʙ</td></tr>
-            <tr><td>г</td><td>ᴦ</td></tr>
-            <tr><td>е</td><td>℮</td></tr>
-            <tr><td>з</td><td>ɜ</td></tr>
-            <tr><td>и</td><td>ͷ</td></tr>
-            <tr><td>к</td><td>ĸ</td></tr>
-            <tr><td>л</td><td>ᴫ</td></tr>
-            <tr><td>м</td><td>ᴍ</td></tr>
-            <tr><td>н</td><td>ʜ</td></tr>
-            <tr><td>о</td><td>ο</td></tr>
-            <tr><td>п</td><td>ᴨ</td></tr>
-            <tr><td>р</td><td>ⲣ</td></tr>
-            <tr><td>с</td><td>ϲ</td></tr>
-            <tr><td>т</td><td>ᴛ</td></tr>
-            <tr><td>ф</td><td>ɸ</td></tr>
-            <tr><td>я</td><td>ᴙ</td></tr>
+<tr><td>а</td><td>–</td></tr>
+    <tr><td>б</td><td>–</td></tr>
+    <tr><td>в</td><td>ʙ</td></tr>
+    <tr><td>г</td><td>ᴦ</td></tr>
+    <tr><td>д</td><td>–</td></tr>
+    <tr><td>е</td><td>℮</td></tr>
+    <tr><td>ё</td><td>–</td></tr>
+    <tr><td>ж</td><td>–</td></tr>
+    <tr><td>з</td><td>ɜ</td></tr>
+    <tr><td>и</td><td>ͷ</td></tr>
+    <tr><td>й</td><td>–</td></tr>
+    <tr><td>к</td><td>ĸ</td></tr>
+    <tr><td>л</td><td>ᴫ</td></tr>
+    <tr><td>м</td><td>ᴍ</td></tr>
+    <tr><td>н</td><td>ʜ</td></tr>
+    <tr><td>о</td><td>ο</td></tr>
+    <tr><td>п</td><td>ᴨ</td></tr>
+    <tr><td>р</td><td>ⲣ</td></tr>
+    <tr><td>с</td><td>ϲ</td></tr>
+    <tr><td>т</td><td>ᴛ</td></tr>
+    <tr><td>у</td><td>–</td></tr>
+    <tr><td>ф</td><td>ɸ</td></tr>
+    <tr><td>х</td><td>–</td></tr>
+    <tr><td>ц</td><td>–</td></tr>
+    <tr><td>ч</td><td>–</td></tr>
+    <tr><td>ш</td><td>–</td></tr>
+    <tr><td>щ</td><td>–</td></tr>
+    <tr><td>ъ</td><td>–</td></tr>
+    <tr><td>ы</td><td>–</td></tr>
+    <tr><td>ь</td><td>–</td></tr>
+    <tr><td>э</td><td>–</td></tr>
+    <tr><td>ю</td><td>–</td></tr>
+    <tr><td>я</td><td>ᴙ</td></tr>
           </tbody>
         </table>
         <table>
-          <thead>
-            <tr><th>НОРМАЛЬНАЯ БУКВА</th><th>НЕЧИТАЕМЫЙ ОМОГЛИФ</th></tr>
-          </thead>
+          <thead><tr><th>НОРМАЛЬНАЯ БУКВА</th><th>НЕЧИТАЕМЫЙ ОМОГЛИФ</th></tr></thead>
           <tbody>
-            <tr><td>А</td><td>Α</td></tr>
-            <tr><td>В</td><td>Β</td></tr>
-            <tr><td>Г</td><td>Γ</td></tr>
-            <tr><td>Е</td><td>Ε</td></tr>
-            <tr><td>З</td><td>Ꝫ</td></tr>
-            <tr><td>И</td><td>𐐥</td></tr>
-            <tr><td>К</td><td>Κ</td></tr>
-            <tr><td>М</td><td>Μ</td></tr>
-            <tr><td>Н</td><td>Η</td></tr>
-            <tr><td>О</td><td>Ο</td></tr>
-            <tr><td>П</td><td>Π</td></tr>
-            <tr><td>Р</td><td>Ρ</td></tr>
-            <tr><td>С</td><td>Ꮯ</td></tr>
-            <tr><td>Т</td><td>Τ</td></tr>
-            <tr><td>У</td><td>Ꭹ</td></tr>
-            <tr><td>Ф</td><td>Փ</td></tr>
-            <tr><td>Х</td><td>Χ</td></tr>
-            <tr><td>Ч</td><td>Ⴗ</td></tr>
-            <tr><td>Ш</td><td>Ш</td></tr>
-            <tr><td>Ь</td><td>Ꮟ</td></tr>
-            <tr><td>Э</td><td>℈</td></tr>
+    <tr><td>А</td><td>Α</td></tr>
+    <tr><td>Б</td><td>–</td></tr>
+    <tr><td>В</td><td>Β</td></tr>
+    <tr><td>Г</td><td>Γ</td></tr>
+    <tr><td>Д</td><td>–</td></tr>
+    <tr><td>Е</td><td>Ε</td></tr>
+    <tr><td>Ё</td><td>–</td></tr>
+    <tr><td>Ж</td><td>–</td></tr>
+    <tr><td>З</td><td>Ꝫ</td></tr>
+    <tr><td>И</td><td>𐐥</td></tr>
+    <tr><td>Й</td><td>–</td></tr>
+    <tr><td>К</td><td>Κ</td></tr>
+    <tr><td>Л</td><td>–</td></tr>
+    <tr><td>М</td><td>Μ</td></tr>
+    <tr><td>Н</td><td>Η</td></tr>
+    <tr><td>О</td><td>Ο</td></tr>
+    <tr><td>П</td><td>Π</td></tr>
+    <tr><td>Р</td><td>Ρ</td></tr>
+    <tr><td>С</td><td>Ꮯ</td></tr>
+    <tr><td>Т</td><td>Τ</td></tr>
+    <tr><td>У</td><td>Ꭹ</td></tr>
+    <tr><td>Ф</td><td>Փ</td></tr>
+    <tr><td>Х</td><td>Χ</td></tr>
+    <tr><td>Ц</td><td>–</td></tr>
+    <tr><td>Ч</td><td>Ⴗ</td></tr>
+    <tr><td>Ш</td><td>Ш</td></tr>
+    <tr><td>Щ</td><td>–</td></tr>
+    <tr><td>Ъ</td><td>–</td></tr>
+    <tr><td>Ы</td><td>–</td></tr>
+    <tr><td>Ь</td><td>Ꮟ</td></tr>
+    <tr><td>Э</td><td>℈</td></tr>
+    <tr><td>Ю</td><td>–</td></tr>
+    <tr><td>Я</td><td>–</td></tr>
           </tbody>
         </table>
       </div>
@@ -261,18 +275,18 @@
         </div>
       </div>
       <div class="list-container">
-        <h2 id="listTitle">
-          Список слов <span id="wordCount" class="word-count"></span>
-        </h2>
+        <h2 id="listTitle">Список слов <span id="wordCount" class="word-count"></span></h2>
         <ul id="list"></ul>
       </div>
     </section>
 
     <aside class="speech-panel">
-      <label>Окно озвучки текста</label>
-      <div id="speechContainer">
-        Загрузка виджета озвучки…
-      </div>
+      <label for="speechFrame">Окно озвучки текста (zvukogram.com)</label>
+      <iframe
+        id="speechFrame"
+        src="https://zvukogram.com/speech/bot-maxim/"
+        allow="autoplay">
+      </iframe>
       <div class="donation">
         <h3>Донат (по желанию)</h3>
         <ul>
@@ -316,58 +330,20 @@
     const sources = {
       upper: {
         dir: 'UPPERCASE',
-        files: [
-          'ALAH.txt', 'AUTIST.txt', 'CHERNOZHOPYY.txt', 'CHINK.txt', 'CHURKA.txt',
-          'FASHIST.txt', 'GENOTSID.txt', 'GOMIK.txt', 'GOMOSEK.txt', 'HIDZHAB.txt',
-          'HOHOL.txt', 'INTSEL.txt', 'KUKOLD.txt', 'NATSIST.txt', 'NEGR.txt',
-          'NIGA.txt', 'NIGER.txt', 'PEDIK.txt', 'PEDRILA.txt', 'PIDARAS.txt',
-          'PIDOR.txt', 'PIDORAS.txt', 'PIDRILA.txt', 'PINDOS.txt', 'SIMP.txt',
-          'SIONIST.txt', 'UZKOGLAZY.txt', 'ZHID.txt'
-        ]
+        files: [ /* ... */ ]
       },
       lower: {
         dir: 'lowercase',
-        files: [
-          'alah.txt', 'autist.txt', 'chernozhopyy.txt', 'chink.txt', 'churka.txt',
-          'fashist.txt', 'genotsid.txt', 'gomik.txt', 'gomosek.txt', 'hidzhab.txt',
-          'hohol.txt', 'intsel.txt', 'kukold.txt', 'natsist.txt', 'negr.txt',
-          'niga.txt', 'niger.txt', 'pedik.txt', 'pedrila.txt', 'pidaras.txt',
-          'pidor.txt', 'pidoras.txt', 'pidrila.txt', 'pindos.txt', 'simp.txt',
-          'sionist.txt', 'uzkoglazy.txt', 'zhid.txt'
-        ]
+        files: [ /* ... */ ]
       }
     };
+    const labels = { /* ... */ };
 
-    const labels = {
-      'NIGA.txt': 'нига', 'niga.txt': 'нига',
-      'NEGR.txt': 'негр', 'negr.txt': 'негр',
-      'NIGER.txt': 'нигер', 'niger.txt': 'нигер',
-      'ALAH.txt': 'аллах', 'alah.txt': 'аллах',
-      'AUTIST.txt': 'аутист', 'autist.txt': 'аутист',
-      'CHERNOZHOPYY.txt': 'черножопый', 'chernozhopyy.txt': 'черножопый',
-      'CHINK.txt': 'чинк', 'chink.txt': 'чинк',
-      'CHURKA.txt': 'чурка', 'churka.txt': 'чурка',
-      'FASHIST.txt': 'фашист', 'fashist.txt': 'фашист',
-      'GENOTSID.txt': 'геноцид', 'genotsid.txt': 'геноцид',
-      'GOMIK.txt': 'гомик', 'gomik.txt': 'гомик',
-      'GOMOSEK.txt': 'гомосек', 'gomosek.txt': 'гомосек',
-      'HIDZHAB.txt': 'хиджаб', 'hidzhab.txt': 'хиджаб',
-      'HOHOL.txt': 'хохол', 'hohol.txt': 'хохол',
-      'INTSEL.txt': 'инцел', 'intsel.txt': 'инцел',
-      'KUKOLD.txt': 'кукольд', 'kukold.txt': 'кукольд',
-      'NATSIST.txt': 'нацист', 'natsist.txt': 'нацист',
-      'PEDIK.txt': 'педик', 'pedik.txt': 'педик',
-      'PEDRILA.txt': 'педрила', 'pedrila.txt': 'педрила',
-      'PIDARAS.txt': 'пидарас', 'pidaras.txt': 'пидарас',
-      'PIDOR.txt': 'пидор', 'pidor.txt': 'пидор',
-      'PIDORAS.txt': 'пидорас', 'pidoras.txt': 'пидорас',
-      'PIDRILA.txt': 'пидрила', 'pidrila.txt': 'пидрила',
-      'PINDOS.txt': 'пиндос', 'pindos.txt': 'пиндос',
-      'SIMP.txt': 'симп', 'simp.txt': 'симп',
-      'SIONIST.txt': 'сионист', 'sionist.txt': 'сионист',
-      'UZKOGLAZY.txt': 'узкоглазый', 'uzkoglazy.txt': 'узкоглазый',
-      'ZHID.txt': 'жид', 'zhid.txt': 'жид'
-    };
+    const regSelect = document.getElementById('registerSelect');
+    const fileSelect = document.getElementById('fileSelect');
+    const list = document.getElementById('list');
+    const listTitle = document.getElementById('listTitle');
+    const wordCount = document.getElementById('wordCount');
 
     function wrapChars(text) {
       return Array.from(text).map(ch => {
@@ -379,7 +355,6 @@
     }
 
     function populateRegisterSelect() {
-      const regSelect = document.getElementById('registerSelect');
       regSelect.innerHTML = '';
       [['ВЕРХНИЙ', 'upper'], ['нижний', 'lower']]
         .forEach(([t, v]) => regSelect.add(new Option(t, v)));
@@ -387,11 +362,10 @@
     }
 
     function populateFileSelect(mode) {
-      const fileSelect = document.getElementById('fileSelect');
       fileSelect.innerHTML = '';
-      sources[mode].files.forEach(f =>
-        fileSelect.add(new Option(labels[f] || f, f))
-      );
+      sources[mode].files.forEach(f => {
+        fileSelect.add(new Option(labels[f] || f, f));
+      });
       fileSelect.selectedIndex = 0;
     }
 
@@ -409,12 +383,8 @@
     }
 
     async function renderList() {
-      const mode = document.getElementById('registerSelect').value;
-      const file = document.getElementById('fileSelect').value;
-      const list = document.getElementById('list');
-      const listTitle = document.getElementById('listTitle');
-      const wordCount = document.getElementById('wordCount');
-
+      const mode = regSelect.value;
+      const file = fileSelect.value;
       list.innerHTML = '<li class="loading">Загрузка...</li>';
       listTitle.textContent = 'Загрузка...';
       wordCount.textContent = '';
@@ -424,7 +394,7 @@
       list.innerHTML = '';
       wordCount.textContent = `(${words.length} слов)`;
 
-      if (!words.length) {
+      if (words.length === 0) {
         list.innerHTML = '<li>Нет слов для отображения</li>';
       } else {
         words.forEach(word => {
@@ -435,37 +405,15 @@
       }
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
-      populateRegisterSelect();
-      populateFileSelect('upper');
+    regSelect.addEventListener('change', () => {
+      populateFileSelect(regSelect.value);
       renderList();
-      document.getElementById('registerSelect')
-        .addEventListener('change', () => {
-          populateFileSelect(document.getElementById('registerSelect').value);
-          renderList();
-        });
-      document.getElementById('fileSelect')
-        .addEventListener('change', renderList);
-
-      // Загрузка внешнего виджета .dash
-      const container = document.getElementById('speechContainer');
-      fetch('https://zvukogram.com/speech/bot-maxim/')
-        .then(r => r.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const doc = parser.parseFromString(html, 'text/html');
-          const dash = doc.querySelector('.dash');
-          if (dash) {
-            container.innerHTML = '';
-            container.appendChild(dash.cloneNode(true));
-          } else {
-            container.innerHTML = '<p>Элемент .dash не найден</p>';
-          }
-        })
-        .catch(() => {
-          container.innerHTML = '<p>Ошибка загрузки виджета озвучки</p>';
-        });
     });
+    fileSelect.addEventListener('change', renderList);
+
+    populateRegisterSelect();
+    populateFileSelect('upper');
+    renderList();
   </script>
 </body>
 </html>
