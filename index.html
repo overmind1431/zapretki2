@@ -32,11 +32,14 @@
       font-size: 0.9em;
     }
     .main {
-      display: flex;
-      gap: 24px;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
+  display: flex;
+  gap: 24px;
+  width: 100vw;         /* растягиваем контейнер по всей ширине окна */
+  max-width: none;      /* снимаем ограничение 1400px */
+  margin: 0;            /* убираем автоматические отступы */
+  padding: 0 16px;      /* если нужен отступ по бокам */
+  box-sizing: border-box;
+}
     .sidebar, .speech-panel {
       flex: 0 0 640px;
       background: var(--card-bg);
