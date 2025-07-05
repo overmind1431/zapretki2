@@ -61,12 +61,14 @@
       font-size: 0.85em;
       text-align: center;
     }
-    .sidebar .tables {
-      display: flex;
-      justify-content: space-between;
-      gap: 8px;
-      overflow-x: auto;
-    }
+
+/* Стало */
+.sidebar .tables {
+  display: flex;
+  justify-content: flex-start; /* выравниваем таблицы слева */
+  gap: 8px;                     /* расстояние между ними */
+  overflow-x: auto;
+}
     /* Общее правило для таблиц */
     .sidebar .tables table {
       border-collapse: collapse;
