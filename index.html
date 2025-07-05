@@ -64,11 +64,13 @@
 
 /* Стало */
 .sidebar .tables {
-  display: flex;
-  justify-content: flex-start; /* выравниваем таблицы слева */
-  gap: 8px;                     /* расстояние между ними */
+  display: inline-flex;
+  gap: 8px;
   overflow-x: auto;
+  width: auto;
+  max-width: none;
 }
+
     /* Общее правило для таблиц */
     .sidebar .tables table {
       border-collapse: collapse;
