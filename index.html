@@ -31,15 +31,17 @@
       margin-bottom: 24px;
       font-size: 0.9em;
     }
+
     .main {
-  display: flex;
-  gap: 24px;
-  width: 100vw;         /* растягиваем контейнер по всей ширине окна */
-  max-width: none;      /* снимаем ограничение 1400px */
-  margin: 0;            /* убираем автоматические отступы */
-  padding: 0 16px;      /* если нужен отступ по бокам */
-  box-sizing: border-box;
-}
+      display: flex;
+      gap: 24px;
+      width: 100vw;
+      max-width: none;
+      margin: 0;
+      padding: 0 16px;
+      box-sizing: border-box;
+    }
+
     .sidebar, .speech-panel {
       flex: 0 0 640px;
       background: var(--card-bg);
@@ -50,40 +52,50 @@
       flex-direction: column;
       gap: 12px;
     }
+
     .sidebar .explanation {
       font-size: 0.85em;
       text-align: center;
     }
+
     .sidebar .tables {
       display: flex;
       justify-content: space-between;
       gap: 8px;
       overflow-x: auto;
     }
-    .sidebar table {
+
+    /* Общее правило: снимаем 48% и не сжимаем таблицы ниже контента */
+    .sidebar .tables table {
       border-collapse: collapse;
-      width: 48%;
+      width: auto;
       font-size: 0.75em;
+      flex-shrink: 0;
     }
+
+    /* Первая таблица (омоглифы) — более узкая */
+    .sidebar .tables table:first-child {
+      width: 200px;      /* задайте нужную ширину */
+      min-width: 150px;  /* минимальная, чтобы не съехало совсем */
+    }
+
     .sidebar th, .sidebar td {
       border: 1px solid #444;
       padding: 4px 6px;
       text-align: center;
     }
+
     .sidebar th {
       background: #333;
       font-weight: 600;
     }
+
     .content {
       flex: 1;
       display: flex;
       flex-direction: column;
     }
-    .generated-title {
-      font-size: 1.2em;
-      font-weight: 600;
-      margin-bottom: 16px;
-    }
+
     .controls {
       background: var(--card-bg);
       box-shadow: var(--shadow);
@@ -96,6 +108,7 @@
       align-items: center;
       justify-content: space-between;
     }
+
     .controls div { display: flex; flex-direction: column; }
     label { margin-bottom: 8px; font-weight: 600; }
     select {
@@ -105,6 +118,7 @@
       background: #2a2a2a;
       color: var(--text-color);
     }
+
     .list-container {
       background: var(--card-bg);
       box-shadow: var(--shadow);
@@ -112,6 +126,7 @@
       overflow: hidden;
       flex: 1;
     }
+
     .list-container h2 {
       background: var(--primary-color);
       color: #fff;
@@ -119,6 +134,7 @@
       font-size: 1.1em;
       margin: 0;
     }
+
     .list-container ul {
       list-style: none;
       padding: 16px;
@@ -126,14 +142,17 @@
       max-height: 60vh;
       overflow-y: auto;
     }
+
     .list-container li {
       padding: 4px 0;
       border-bottom: 1px solid #333;
       word-break: break-all;
       font-size: 0.95em;
     }
+
     .list-container li:last-child { border-bottom: none; }
     .non-russian { opacity: var(--non-russian-opacity); }
+
     .speech-panel iframe {
       width: 100%;
       height: 800px;
@@ -141,31 +160,37 @@
       border-radius: var(--border-radius);
       background: #2a2a2a;
     }
+
     .speech-panel-title {
       font-size: 1em;
       font-weight: 600;
       margin-bottom: 12px;
     }
+
     .donation {
       margin-top: 16px;
       border-top: 1px solid #444;
       padding-top: 16px;
     }
+
     .donation h3 {
       font-size: 1em;
       margin-bottom: 12px;
       font-weight: 600;
     }
+
     .donation ul {
       list-style: none;
       padding: 0;
     }
+
     .donation li {
       display: flex;
       align-items: center;
       margin-bottom: 8px;
       font-size: 0.95em;
     }
+
     .donation .icon-crypto {
       display: inline-block;
       width: 20px;
@@ -173,16 +198,19 @@
       margin-right: 8px;
       flex-shrink: 0;
     }
+
     .donation a {
       color: var(--primary-color);
       text-decoration: none;
       word-break: break-all;
     }
+
     .loading {
       text-align: center;
       padding: 20px;
       font-style: italic;
     }
+
     .word-count {
       font-size: 0.9em;
       color: #888;
